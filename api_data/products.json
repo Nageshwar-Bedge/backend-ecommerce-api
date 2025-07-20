@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "prod_000001",
+    "name": "iPhone 14",
+    "description": "Latest model with A16 Bionic",
+    "price": 99999,
+    "size": "large",
+    "created_at": "2025-07-20T13:54:54.907000"
+  },
+  {
+    "_id": "prod_000002",
+    "name": "Samsung Galaxy S22",
+    "description": "Flagship Android phone",
+    "price": 79999,
+    "size": "large",
+    "created_at": "2025-07-20T13:54:54.924000"
+  },
+  {
+    "_id": "prod_000003",
+    "name": "AirPods Pro",
+    "description": "Wireless earbuds with noise cancellation",
+    "price": 24999,
+    "size": "small",
+    "created_at": "2025-07-20T13:54:54.939000"
+  },
+  {
+    "_id": "prod_000004",
+    "name": "iPhone 14",
+    "description": "Latest model with A16 Bionic",
+    "price": 99999,
+    "size": "large",
+    "created_at": "2025-07-20T19:26:47.810891"
+  },
+  {
+    "_id": "prod_000005",
+    "name": "Samsung Galaxy S22",
+    "description": "Flagship Android phone",
+    "price": 79999,
+    "size": "large",
+    "created_at": "2025-07-20T19:26:47.849899"
+  },
+  {
+    "_id": "prod_000006",
+    "name": "AirPods Pro",
+    "description": "Wireless earbuds with noise cancellation",
+    "price": 24999,
+    "size": "small",
+    "created_at": "2025-07-20T19:26:47.891900"
+  }
+]
