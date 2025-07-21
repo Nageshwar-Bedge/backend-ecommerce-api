@@ -7,7 +7,6 @@ from app.routers import products, orders
 
 load_dotenv()
 
-# ✅ Initialize FastAPI application (no lifespan needed)
 app = FastAPI(
     title="E-Commerce API",
     description=r"""
@@ -32,16 +31,14 @@ A complete e-commerce backend API built with FastAPI and in-memory storage.
     }
 )
 
-# ✅ CORS middleware for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For production, replace with specific domain(s)
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ✅ Register routers
 app.include_router(products.router)
 app.include_router(orders.router)
 
