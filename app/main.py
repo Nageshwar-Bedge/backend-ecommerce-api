@@ -1,69 +1,47 @@
-"""
-FastAPI E-Commerce Backend Application
-HROne Backend Intern Hiring Task
-
-A complete e-commerce API with product and order management
-Built with FastAPI and MongoDB for scalability and performance
-"""
 import os
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
-from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 
-from app.database import connect_to_mongo, close_mongo_connection
 from app.routers import products, orders
 
 load_dotenv()
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Application lifespan manager"""
-    # Startup
-    await connect_to_mongo()
-    yield
-    # Shutdown
-    await close_mongo_connection()
-
-# Initialize FastAPI application
+# ✅ Initialize FastAPI application (no lifespan needed)
 app = FastAPI(
     title="E-Commerce API",
-    description="""
-    ## HROne Backend Intern Hiring Task
-    
-    A complete e-commerce backend API built with FastAPI and MongoDB.
-    
-    ### Features:
-    * **Product Management**: Create and list products with filtering
-    * **Order Management**: Place orders and retrieve user order history
-    * **Search & Filter**: Advanced product search with pagination
-    * **Data Validation**: Comprehensive input validation and error handling
-    * **Performance**: Optimized MongoDB queries with proper indexing
-    
-    ### Tech Stack:
-    * FastAPI (Python web framework)
-    * MongoDB (NoSQL database)
-    * Pydantic (Data validation)
-    * Motor (Async MongoDB driver)
-    """,
+    description=r"""
+## HROne Backend Intern Hiring Task
+
+A complete e-commerce backend API built with FastAPI and in-memory storage.
+
+### Features:
+* Product Management: Create and list products with filtering
+* Order Management: Place orders and retrieve user order history
+* Search & Filter: Advanced product search with pagination
+* Data Validation: Comprehensive input validation and error handling
+
+### Tech Stack:
+* FastAPI (Python web framework)
+* Pydantic (Data validation)
+""",
     version="1.0.0",
     contact={
         "name": "HROne Backend Task",
         "url": "https://github.com/hrone-task/ecommerce-api",
-    },
-    lifespan=lifespan
+    }
 )
 
-# CORS middleware for frontend integration
+# ✅ CORS middleware for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origins=["*"],  # For production, replace with specific domain(s)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include routers
+# ✅ Register routers
 app.include_router(products.router)
 app.include_router(orders.router)
 
@@ -90,7 +68,7 @@ async def health_check():
         "status": "healthy",
         "service": "E-Commerce API",
         "version": "1.0.0",
-        "database": "MongoDB",
+        "database": "InMemory",
         "environment": os.getenv("ENVIRONMENT", "development")
     }
 
